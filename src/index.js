@@ -5,7 +5,7 @@ import { HashRouter } from "react-router-dom";
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-    uri: 'https://ecommerce-fazm01-scandiweb.000webhostapp.com/public/graphql.php',
+    uri: 'https://ecommerce-fazm01-scandiweb.000webhostapp.com/public/graphql',
     cache: new InMemoryCache(),
 })
 
