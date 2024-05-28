@@ -1,8 +1,8 @@
 {
+  "homepage": "https://fazm01.github.io/ecomerceReactJS",
   "name": "scandiweb",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fazm01.github.io/ecomerceReactJS",
   "dependencies": {
     "@apollo/client": "^3.10.4",
     "@apollo/react-components": "^4.0.0",
