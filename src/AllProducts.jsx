@@ -37,7 +37,7 @@ class AllProducts extends Component {
         <Query query={ALL_PRODUCTS}>
         {({ loading, error, data})=>{
         if (loading) return <div className = "PageTitle">Loading...</div>;
-        if (error) return <div className = "PageTitle"> Error: {error.message}</div>;
+        if (error) return <div className = "PageTitle"> Error 1: {error.message}</div>;
             return(
                     <div className='row'>
                     <div className="PageTitle">All</div>
