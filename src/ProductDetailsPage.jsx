@@ -174,7 +174,7 @@ class ProductDetailsPage extends Component {
                         <div className="PDPPriceText">Price:</div>
                         <div className="PDPPrice">{this.state.currency}{this.state.price}</div>
                         <button className="PDPAddToCart" data-testid='add-to-cart' onClick={this.handleAddToCart} disabled={!this.state.inStock || !this.allAttributesSelected()} style={!this.state.inStock || !this.allAttributesSelected()? {opacity: "0.5", filter: "alpha(opacity=50)"} : {}}>{this.state.inStock?"ADD TO CART": "OUT OF STOCK"}</button>
-                        <div className="PDPDescription" data-testid='product-description'>{parse(this.state.description.replace(regex, '<br>'))}</div>
+                        <div className="PDPDescription" data-testid='product-description'>{parse(this.state.description.replace(regex, '<br>'))}</div> 
                     </div>
 
                     </div>
@@ -185,5 +185,11 @@ class ProductDetailsPage extends Component {
         </>
       )}
 }
- 
+ /** IMPORTANT: wih regards to product-description, the stable hosting that I'm using unfortunately truncates long text, disallowing me from
+  * retrieving the description text of "apple-airtag", "apple-airpods-pro", and "xbox-series-s", and triggering an "Unexpected end of JSON" error,
+  * which completely bugs the entire query and the ProductDetailsPage for all the products. I was only able to render them using
+  * localserver and also on another hosting platform: 000webhost(although it is extremely unstable) since both do not have such
+  * limitations on long text. If you wish to use 000webhost, I will provide a link for its graphql endpoint in a comment in index.js to paste in
+  * uri. Keep in mind that I did not use it as default because it is very unstable and does not always work. After you replace the uri,
+  * you can run "npm run deploy" to commit changes */
 export default withRouterNew(ProductDetailsPage);
