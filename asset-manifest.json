@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ecomerceReactJS/static/css/main.d299eaa5.css",
+    "main.css": "/ecomerceReactJS/static/css/main.8e84a23e.css",
     "main.js": "/ecomerceReactJS/static/js/main.39f9d60d.js",
     "static/media/BrandIcon.svg": "/ecomerceReactJS/static/media/BrandIcon.c06a5a2f12977abf2dabceb97135f3be.svg",
     "static/media/EmptyCart.svg": "/ecomerceReactJS/static/media/EmptyCart.d19953670255792370f9fd25fc20f2ce.svg",
     "index.html": "/ecomerceReactJS/index.html",
     "static/media/left.svg": "/ecomerceReactJS/static/media/left.9da76eb579b33ffc3e84133966215c64.svg",
     "static/media/right.svg": "/ecomerceReactJS/static/media/right.f8c938b5812bf36183ea52c9c07eb56c.svg",
-    "main.d299eaa5.css.map": "/ecomerceReactJS/static/css/main.d299eaa5.css.map",
+    "main.8e84a23e.css.map": "/ecomerceReactJS/static/css/main.8e84a23e.css.map",
     "main.39f9d60d.js.map": "/ecomerceReactJS/static/js/main.39f9d60d.js.map"
   },
   "entrypoints": [
-    "static/css/main.d299eaa5.css",
+    "static/css/main.8e84a23e.css",
     "static/js/main.39f9d60d.js"
   ]
 }
