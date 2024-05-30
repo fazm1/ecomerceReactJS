@@ -7,7 +7,7 @@ class Attribute extends Component {
     render() { 
         const { AttributeName, AttributeOptions} = this.props;
     return (    <>
-                    <div className = "AttributeName">{AttributeName}</div>
+                    <div className = "AttributeName">{AttributeName}:</div>
                    
                     {AttributeOptions.map((options, index)=>(
                     <div key={index} className = "AttributeOptions" data-testid={`product-attribute-${AttributeName}`}>
