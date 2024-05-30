@@ -166,7 +166,6 @@ body{
     top: 155px;
     left: 100px;
     gap: 0px;
-    opacity: 0px;
     color: rgba(141, 143, 154, 1);
     font-size:24px;
 }
@@ -226,7 +225,6 @@ body{
     top: 160px;
     left: 903px;
     gap: 0px;
-    opacity: 0px;
     padding-bottom: 50px;
 
 }
@@ -236,7 +234,6 @@ body{
     top: 412px;
     left: 903px;
     gap: 0px;
-    opacity: 0px;
     font-family: Roboto Condensed;
     font-size: 18px;
     font-weight: 700;
@@ -251,7 +248,6 @@ body{
     top: 412px;
     left: 903px;
     gap: 0px;
-    opacity: 0px;
     font-family: Roboto Condensed;
     font-size: 18px;
     font-weight: 700;
@@ -267,7 +263,6 @@ body{
     top: 440px;
     left: 903px;
     gap: 0px;
-    opacity: 0px;
     font-family: Raleway;
     font-size: 24px;
     font-weight: 700;
@@ -284,7 +279,6 @@ body{
     left: 903px;
     padding: 16px 32px 16px 32px;
     gap: 0px;
-    opacity: 0px;
     color:white;
     border: none;
 
@@ -300,7 +294,6 @@ body{
     top: 598px;
     left: 903px;
     gap: 0px;
-    opacity: 0px;
     font-family: Roboto;
     font-size: 16px;
     font-weight: 400;
@@ -315,7 +308,6 @@ body{
     top: 349px;
     left: 903px;
     gap: 8px;
-    opacity: 0px;
     padding-bottom: 20px;
     padding-top: 10px;
     padding-left: 1px;
@@ -331,7 +323,6 @@ body{
     top: 245px;
     left: 903px;
     gap: 0px;
-    opacity: 0px;
     border: solid 1px;
     cursor:pointer;
     align-content: center;
@@ -373,7 +364,6 @@ body{
     top: 560px;
     left: 100px;
     gap: 0px;
-    opacity: 0px;
     box-shadow: 0px 4px 35px 0px rgba(168, 172, 176, 0.19);
     cursor: pointer;
     border-image-source: linear-gradient(0deg, #000000, #000000),
@@ -403,7 +393,6 @@ body{
     top: 223px;
     left: 26px;
     gap: 0px;
-    opacity: 0px;
     background:transparent;
     background-color: rgba(0, 0, 0, 0.73);
     border:none;
@@ -416,7 +405,6 @@ body{
     top: 223px;
     left: 540px;
     gap: 0px;
-    opacity: 0px;
     background:transparent;
     background-color: rgba(0, 0, 0, 0.73);
     border:none;
@@ -429,7 +417,6 @@ body{
     left: 27.54px;
     gap: 0px;
     border: 1.5px 0px 0px 0px;
-    opacity: 0px;
 
 }
 .RightArrow{
@@ -439,7 +426,6 @@ body{
     left: 547.5px;
     gap: 0px;
     border: 1.5px 0px 0px 0px;
-    opacity: 0px;
 
 }
 
@@ -550,7 +536,6 @@ body{
     width: 100%;
     height: 16px;
     gap: 0px;
-    opacity: 0px;
     font-family: Raleway;
     font-size: 14px;
     font-weight: 400;
@@ -564,7 +549,6 @@ body{
     top: 349px;
     left: 903px;
     gap: 8px;
-    opacity: 0px;
     padding-top: 1px;
     padding-left: 1px;
     display: inline-flex;
@@ -595,7 +579,6 @@ body{
     top: 2px;
     left: 28px;
     gap: 0px;
-    opacity: 0px;
     border: solid 0.1px;
     display: inline-block;
     cursor:pointer;
@@ -608,7 +591,6 @@ body{
     width: 289px;
     height: 28px;
     gap: 0px;
-    opacity: 0px;
     position:absolute;
     font-family: Roboto;
     font-size: 16px;
@@ -621,7 +603,6 @@ body{
     width: 249px;
     height: 28px;
     gap: 0px;
-    opacity: 0px;
     text-align: right;
     position:absolute;
     font-family: Raleway;
@@ -637,7 +618,6 @@ body{
     width: 292px;
     height: 43px;
     gap: 12px;
-    opacity: 0px;
     border: solid;
     background-color: #5ECE7B;
     color:white;
@@ -656,7 +636,6 @@ body{
     width: 24px;
     height: 167px;
     gap: 0px;
-    opacity: 0px;
     position:absolute;
     left:150px;
     top: 80px;
@@ -669,7 +648,6 @@ body{
     height: 24px;
     gap: 0px;
     border: 1px solid;
-    opacity: 0px;
     right: 6px; 
     text-align: center;
     cursor: pointer;
@@ -684,7 +662,6 @@ body{
     height: 24px;
     gap: 0px;
     border: 1px solid;
-    opacity: 0px;
     right: 6px; 
     text-align: center;
     cursor: pointer
