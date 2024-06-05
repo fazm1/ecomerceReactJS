@@ -99,7 +99,6 @@ class Cart extends Component {
       });
 
       for(const order of orders){
-        console.log(order.item);
         if(order.item.length === 0){
           order.item = [57];
         }

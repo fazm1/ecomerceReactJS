@@ -92,8 +92,8 @@ class NavigationBar extends Component {
         </ul>
         
         <Link to= "/" className='logo'><img src={logo}></img></Link>
-        <a onClick={this.handleClick} className='cart'>
-        <div data-testid= 'cart-btn' style={cartItems.length==0?{display:"none"}:{}}className={this.state.showCart==false?"CountBubble":"CountBubbleWithCart"}><span className="CountBubbleNumber">{cartItems.length}</span></div>
+        <a onClick={this.handleClick} className='cart' data-testid= 'cart-btn'>
+        <div style={cartItems.length==0?{display:"none"}:{}}className={this.state.showCart==false?"CountBubble":"CountBubbleWithCart"}><span className="CountBubbleNumber">{cartItems.length}</span></div>
           {this.state.showCart && (
           <div ref={this.setCartRef}>
             <Cart

@@ -11,8 +11,13 @@ import ProductDetailsPage from './ProductDetailsPage';
 
 class App extends Component {
     state = {
-        cart: [],
+        cart: JSON.parse(localStorage.getItem('cart')) || [],
     } 
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.cart != this.state.cart){
+            localStorage.setItem('cart', JSON.stringify(this.state.cart));
+        }
+    }
     addToCart = (id, product, image, price, currency, allAttributes,  selectedAttributes)=>{
         const newItem = {id, product, image, price, currency, allAttributes, attribute: selectedAttributes};
         this.setState(prevState => ({
