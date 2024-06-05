@@ -18,6 +18,10 @@ class App extends Component {
             localStorage.setItem('cart', JSON.stringify(this.state.cart));
         }
     }
+    emptyCart = () =>{
+        this.setState({ cart: [] });
+        localStorage.removeItem('cart');
+    }
     addToCart = (id, product, image, price, currency, allAttributes,  selectedAttributes)=>{
         const newItem = {id, product, image, price, currency, allAttributes, attribute: selectedAttributes};
         this.setState(prevState => ({
@@ -40,7 +44,7 @@ class App extends Component {
     render() { 
         return (
             <>
-            <NavigationBar cartItems={this.state.cart} addToCart={this.addToCart} removeFromCart={this.removeFromCart}/>
+            <NavigationBar cartItems={this.state.cart} addToCart={this.addToCart} removeFromCart={this.removeFromCart} emptyCart={this.emptyCart}/>
             <div id="main-content">
             <Routes> 
               <Route path = "/" element={<AllProducts addToCart={this.addToCart}/>} />

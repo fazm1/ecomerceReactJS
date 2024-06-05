@@ -113,7 +113,10 @@ class Cart extends Component {
         
       }
     }
-
+      this.setState({cartItems: []}, () =>{
+        this.props.emptyCart();
+      });
+      
       return alert("Order placed.")
     };
     render() { 

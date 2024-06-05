@@ -68,7 +68,7 @@ class NavigationBar extends Component {
   }
 
     render() { 
-        const { categoryName, cartItems, addToCart, removeFromCart} = this.props;
+        const { categoryName, cartItems, addToCart, removeFromCart, emptyCart} = this.props;
         return (<>
         <nav className="navbar">
         
@@ -99,7 +99,8 @@ class NavigationBar extends Component {
             <Cart
             cartItems={cartItems}
             addToCart={addToCart}
-            removeFromCart={removeFromCart}/>
+            removeFromCart={removeFromCart}
+            emptyCart={emptyCart}/>
             </div>)}
             <img src={cart}></img>
         </a>
