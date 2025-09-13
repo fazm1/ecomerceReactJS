@@ -22,10 +22,28 @@ const startServer = async () => {
 
   await server.start();
 
+  // Configure CORS for React development server
+  const corsOptions = {
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+    credentials: true,
+    optionsSuccessStatus: 200
+  };
+
+  // Apply CORS to all routes
+  app.use(cors(corsOptions));
+
+  // Health check endpoint
+  app.get('/health', (req, res) => {
+    res.json({ 
+      status: 'OK', 
+      message: 'E-commerce GraphQL API is running',
+      timestamp: new Date().toISOString()
+    });
+  });
+
   // Apply Apollo GraphQL middleware
   app.use(
     "/graphql",
-    cors(),
     express.json(),
     expressMiddleware(server, {
       context: async ({ req }) => {
