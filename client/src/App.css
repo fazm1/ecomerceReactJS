@@ -4,6 +4,114 @@
   flex-direction: column;
 }
 
+/* Add to Cart Button */
+.add-to-cart {
+  width: 100%;
+  background: #5ECE7B;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.add-to-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(94, 206, 123, 0.4);
+  background: #4ab86a;
+}
+
+.add-to-cart:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Image Carousel Styles */
+.image-carousel {
+  position: relative;
+}
+
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #f8f9fa;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.carousel-btn-left {
+  left: 10px;
+}
+
+.carousel-btn-right {
+  right: 10px;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail.active {
+  border-color: #5ECE7B;
+}
+
+.thumbnail:not(.active) {
+  opacity: 0.7;
+}
+
 /* Additional App-specific styles */
 .products-header {
   display: flex;
@@ -129,6 +237,7 @@
 }
 
 .back-btn {
+  margin-top: 1rem;
   background: #95a5a6;
   color: white;
   border: none;
@@ -136,7 +245,6 @@
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
-  margin-bottom: 2rem;
   transition: background-color 0.3s;
 }
 

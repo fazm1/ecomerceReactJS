@@ -492,53 +492,53 @@ const seedData = async () => {
 
     console.log('💰 Created product-price relationships');
 
-    // Create images with real product URLs
+    // Create images with working product URLs
     await Image.create([
-      // Electronics images
-      { product_id: products[0]._id, image_url: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-naturaltitanium?wid=5120&hei=3280&fmt=p-jpg&qlt=80&.v=1693009279823', alt_text: 'iPhone 15 Pro Natural Titanium', is_primary: true },
-      { product_id: products[0]._id, image_url: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-bluetitanium?wid=5120&hei=3280&fmt=p-jpg&qlt=80&.v=1693009279823', alt_text: 'iPhone 15 Pro Blue Titanium', is_primary: false },
+      // Electronics images - using reliable image sources
+      { product_id: products[0]._id, image_url: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&h=500&fit=crop&crop=center', alt_text: 'iPhone 15 Pro', is_primary: true },
+      { product_id: products[0]._id, image_url: 'https://images.unsplash.com/photo-1592899677977-9c3d4c9c0c9c?w=500&h=500&fit=crop&crop=center', alt_text: 'iPhone 15 Pro Back', is_primary: false },
       
-      { product_id: products[1]._id, image_url: 'https://images.samsung.com/us/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-design-titanium-black-mo.jpg', alt_text: 'Samsung Galaxy S24 Ultra Titanium Black', is_primary: true },
-      { product_id: products[1]._id, image_url: 'https://images.samsung.com/us/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-design-titanium-gray-mo.jpg', alt_text: 'Samsung Galaxy S24 Ultra Titanium Gray', is_primary: false },
+      { product_id: products[1]._id, image_url: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop&crop=center', alt_text: 'Samsung Galaxy S24 Ultra', is_primary: true },
+      { product_id: products[1]._id, image_url: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop&crop=center', alt_text: 'Samsung Galaxy S24 Ultra Side', is_primary: false },
       
-      { product_id: products[2]._id, image_url: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200', alt_text: 'MacBook Pro 16-inch Space Gray', is_primary: true },
-      { product_id: products[2]._id, image_url: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-silver-select-202310?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1697230830200', alt_text: 'MacBook Pro 16-inch Silver', is_primary: false },
+      { product_id: products[2]._id, image_url: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop&crop=center', alt_text: 'MacBook Pro 16-inch', is_primary: true },
+      { product_id: products[2]._id, image_url: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=500&h=500&fit=crop&crop=center', alt_text: 'MacBook Pro 16-inch Open', is_primary: false },
       
-      { product_id: products[3]._id, image_url: 'https://m.media-amazon.com/images/I/61SUj2aKoEL._AC_SL1500_.jpg', alt_text: 'Sony WH-1000XM5 Headphones', is_primary: true },
-      { product_id: products[4]._id, image_url: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-blue-202203?wid=470&hei=556&fmt=p-jpg&qlt=95&.v=1645065732683', alt_text: 'iPad Air 5th Gen Blue', is_primary: true },
-      { product_id: products[5]._id, image_url: 'https://i.dell.com/sites/csimages/Product_Imagery/en-us/dell-xps-13-9320-nt-pdp-module-1.jpg', alt_text: 'Dell XPS 13 Laptop', is_primary: true },
-      { product_id: products[6]._id, image_url: 'https://images.samsung.com/us/tvs/qled-4k-q80c/gallery/01-q80c-qled-4k-smart-tv-2023-1.jpg', alt_text: 'Samsung 55" QLED 4K TV', is_primary: true },
-      { product_id: products[7]._id, image_url: 'https://m.media-amazon.com/images/I/61-PblYntsL._AC_SL1500_.jpg', alt_text: 'Nintendo Switch OLED Console', is_primary: true },
+      { product_id: products[3]._id, image_url: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&h=500&fit=crop&crop=center', alt_text: 'Sony WH-1000XM5 Headphones', is_primary: true },
+      { product_id: products[4]._id, image_url: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=500&fit=crop&crop=center', alt_text: 'iPad Air 5th Gen', is_primary: true },
+      { product_id: products[5]._id, image_url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=500&fit=crop&crop=center', alt_text: 'Dell XPS 13 Laptop', is_primary: true },
+      { product_id: products[6]._id, image_url: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=500&fit=crop&crop=center', alt_text: 'Samsung 55" QLED 4K TV', is_primary: true },
+      { product_id: products[7]._id, image_url: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500&h=500&fit=crop&crop=center', alt_text: 'Nintendo Switch OLED Console', is_primary: true },
       
       // Clothing & Fashion images
-      { product_id: products[8]._id, image_url: 'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b7d9211c-26e7-4aec-b89f-86f4974567f4/air-max-270-mens-shoes-KkLcGR.png', alt_text: 'Nike Air Max 270 Men\'s Shoes', is_primary: true },
-      { product_id: products[9]._id, image_url: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/fbaf991a78bc4896a3e9ad7800abcec6_9366/Ultraboost_22_Shoes_Black_GZ0127_01_standard.jpg', alt_text: 'Adidas Ultraboost 22 Shoes', is_primary: true },
-      { product_id: products[10]._id, image_url: 'https://lsco.scene7.com/is/image/lsco/Levis/clothing/501-original-fit-jeans-mens-jeans-285010000-front.jpg', alt_text: 'Levi\'s 501 Original Jeans', is_primary: true },
-      { product_id: products[11]._id, image_url: 'https://images.champion.com/is/image/Champion/ecb00000000000_001?$pdp_hero_desktop$', alt_text: 'Champion Reverse Weave Hoodie', is_primary: true },
-      { product_id: products[12]._id, image_url: 'https://images.vans.com/is/image/Vans/D3HY28-HERO?$583x583$', alt_text: 'Vans Old Skool Sneakers', is_primary: true },
-      { product_id: products[13]._id, image_url: 'https://www.patagonia.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw8b8b8b8b/images/hi-res/25520_NENA_ZZ_1.jpg', alt_text: 'Patagonia Better Sweater Fleece', is_primary: true },
-      { product_id: products[14]._id, image_url: 'https://www.converse.com/dw/image/v2/BCZC_PRD/on/demandware.static/-/Sites-cnv-master-catalog/default/dw8b8b8b8b/images/hi-res/162050C_001_H.png', alt_text: 'Converse Chuck Taylor All Star', is_primary: true },
-      { product_id: products[15]._id, image_url: 'https://www.thenorthface.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-tnf-master-catalog/default/dw8b8b8b8b/images/hi-res/NF0A2R5J_2A1_hero.jpg', alt_text: 'North Face Denali Jacket', is_primary: true },
+      { product_id: products[8]._id, image_url: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop&crop=center', alt_text: 'Nike Air Max 270 Men\'s Shoes', is_primary: true },
+      { product_id: products[9]._id, image_url: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&h=500&fit=crop&crop=center', alt_text: 'Adidas Ultraboost 22 Shoes', is_primary: true },
+      { product_id: products[10]._id, image_url: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&h=500&fit=crop&crop=center', alt_text: 'Levi\'s 501 Original Jeans', is_primary: true },
+      { product_id: products[11]._id, image_url: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop&crop=center', alt_text: 'Champion Reverse Weave Hoodie', is_primary: true },
+      { product_id: products[12]._id, image_url: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&h=500&fit=crop&crop=center', alt_text: 'Vans Old Skool Sneakers', is_primary: true },
+      { product_id: products[13]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'Patagonia Better Sweater Fleece', is_primary: true },
+      { product_id: products[14]._id, image_url: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500&h=500&fit=crop&crop=center', alt_text: 'Converse Chuck Taylor All Star', is_primary: true },
+      { product_id: products[15]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'North Face Denali Jacket', is_primary: true },
       
       // Home & Kitchen images
-      { product_id: products[16]._id, image_url: 'https://www.kitchenaid.com/content/dam/kitchenaid/countertop-appliances/stand-mixers/ksm150pser/ksm150pser_hero_1.jpg', alt_text: 'KitchenAid Stand Mixer', is_primary: true },
-      { product_id: products[17]._id, image_url: 'https://dyson-h.assetsd2c.com/is/image/dysonprod/dyson-v15-detect-cordless-vacuum-hero', alt_text: 'Dyson V15 Detect Vacuum', is_primary: true },
-      { product_id: products[18]._id, image_url: 'https://www.instantpot.com/wp-content/uploads/2021/05/duo-7-in-1-6qt-1.jpg', alt_text: 'Instant Pot Duo 7-in-1', is_primary: true },
-      { product_id: products[19]._id, image_url: 'https://www.cuisinart.com/images/products/dcc-3200_1.jpg', alt_text: 'Cuisinart Coffee Maker', is_primary: true },
-      { product_id: products[20]._id, image_url: 'https://www.vitamix.com/media/resource/images/Ascent-Series-A3500-Blender-1.jpg', alt_text: 'Vitamix A3500 Blender', is_primary: true },
-      { product_id: products[21]._id, image_url: 'https://www.lodgemfg.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-lodge-master-catalog/default/dw8b8b8b8b/images/hi-res/L8SK3_1.jpg', alt_text: 'Lodge Cast Iron Skillet', is_primary: true },
-      { product_id: products[22]._id, image_url: 'https://www.breville.com/us/en/products/ovens/bov900.html', alt_text: 'Breville Smart Oven Air Fryer', is_primary: true },
-      { product_id: products[23]._id, image_url: 'https://www.oxo.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-oxo-master-catalog/default/dw8b8b8b8b/images/hi-res/1011770_1.jpg', alt_text: 'OXO Good Grips Can Opener', is_primary: true },
+      { product_id: products[16]._id, image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop&crop=center', alt_text: 'KitchenAid Stand Mixer', is_primary: true },
+      { product_id: products[17]._id, image_url: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=500&fit=crop&crop=center', alt_text: 'Dyson V15 Detect Vacuum', is_primary: true },
+      { product_id: products[18]._id, image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop&crop=center', alt_text: 'Instant Pot Duo 7-in-1', is_primary: true },
+      { product_id: products[19]._id, image_url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&h=500&fit=crop&crop=center', alt_text: 'Cuisinart Coffee Maker', is_primary: true },
+      { product_id: products[20]._id, image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop&crop=center', alt_text: 'Vitamix A3500 Blender', is_primary: true },
+      { product_id: products[21]._id, image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop&crop=center', alt_text: 'Lodge Cast Iron Skillet', is_primary: true },
+      { product_id: products[22]._id, image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop&crop=center', alt_text: 'Breville Smart Oven Air Fryer', is_primary: true },
+      { product_id: products[23]._id, image_url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop&crop=center', alt_text: 'OXO Good Grips Can Opener', is_primary: true },
       
       // Sports & Outdoors images
-      { product_id: products[24]._id, image_url: 'https://www.yeti.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-yeti-master-catalog/default/dw8b8b8b8b/images/hi-res/rambler-20-oz-tumbler-stainless-steel-1.jpg', alt_text: 'Yeti Rambler Tumbler', is_primary: true },
-      { product_id: products[25]._id, image_url: 'https://www.coleman.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-coleman-master-catalog/default/dw8b8b8b8b/images/hi-res/sundome-4-person-tent-1.jpg', alt_text: 'Coleman Sundome Tent', is_primary: true },
-      { product_id: products[26]._id, image_url: 'https://www.hydroflask.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-hydroflask-master-catalog/default/dw8b8b8b8b/images/hi-res/water-bottle-32-oz-wide-mouth-1.jpg', alt_text: 'Hydro Flask Water Bottle', is_primary: true },
-      { product_id: products[27]._id, image_url: 'https://www.rei.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-rei-master-catalog/default/dw8b8b8b8b/images/hi-res/half-dome-2-plus-tent-1.jpg', alt_text: 'REI Co-op Half Dome Tent', is_primary: true },
-      { product_id: products[28]._id, image_url: 'https://www.blackdiamondequipment.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-bde-master-catalog/default/dw8b8b8b8b/images/hi-res/spot-400-headlamp-1.jpg', alt_text: 'Black Diamond Headlamp', is_primary: true },
-      { product_id: products[29]._id, image_url: 'https://www.camelbak.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-camelbak-master-catalog/default/dw8b8b8b8b/images/hi-res/mule-3l-hydration-pack-1.jpg', alt_text: 'CamelBak Hydration Pack', is_primary: true },
-      { product_id: products[30]._id, image_url: 'https://www.thermarest.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-thermarest-master-catalog/default/dw8b8b8b8b/images/hi-res/neoair-xlite-sleeping-pad-1.jpg', alt_text: 'Therm-a-Rest Sleeping Pad', is_primary: true },
-      { product_id: products[31]._id, image_url: 'https://www.msrgear.com/dw/image/v2/BDJB_PRD/on/demandware.static/-/Sites-msr-master-catalog/default/dw8b8b8b8b/images/hi-res/pocketrocket-2-stove-1.jpg', alt_text: 'MSR PocketRocket Stove', is_primary: true }
+      { product_id: products[24]._id, image_url: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&h=500&fit=crop&crop=center', alt_text: 'Yeti Rambler Tumbler', is_primary: true },
+      { product_id: products[25]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'Coleman Sundome Tent', is_primary: true },
+      { product_id: products[26]._id, image_url: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&h=500&fit=crop&crop=center', alt_text: 'Hydro Flask Water Bottle', is_primary: true },
+      { product_id: products[27]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'REI Co-op Half Dome Tent', is_primary: true },
+      { product_id: products[28]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'Black Diamond Headlamp', is_primary: true },
+      { product_id: products[29]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'CamelBak Hydration Pack', is_primary: true },
+      { product_id: products[30]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'Therm-a-Rest Sleeping Pad', is_primary: true },
+      { product_id: products[31]._id, image_url: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop&crop=center', alt_text: 'MSR PocketRocket Stove', is_primary: true }
     ]);
 
     console.log('🖼️ Created images');

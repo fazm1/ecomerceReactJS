@@ -3,8 +3,7 @@ import { useQuery } from '@apollo/client';
 import ProductCard from './ProductCard';
 import { GET_PRODUCTS, GET_CATEGORIES, GET_PRODUCTS_BY_CATEGORY } from '../graphql/queries';
 
-const ProductList = ({ onProductClick }) => {
-  const [selectedCategory, setSelectedCategory] = useState('');
+const ProductList = ({ onProductClick, onAddToCart, selectedCategory }) => {
   const [showInStockOnly, setShowInStockOnly] = useState(false);
 
   const { data: productsData, loading: productsLoading, error: productsError } = useQuery(GET_PRODUCTS);
@@ -18,13 +17,13 @@ const ProductList = ({ onProductClick }) => {
   );
 
   if (productsLoading || categoriesLoading) {
-    return <div className="loading">🔄 Loading products...</div>;
+    return <div className="page-title">Loading...</div>;
   }
 
   if (productsError) {
     return (
       <div className="error">
-        ❌ Error loading products: {productsError.message}
+        Error loading products: {productsError.message}
       </div>
     );
   }
@@ -32,8 +31,10 @@ const ProductList = ({ onProductClick }) => {
   let products = productsData?.products || [];
 
   // Filter by category if selected
-  if (selectedCategory && categoryProductsData) {
-    products = categoryProductsData.productsByCategory;
+  if (selectedCategory) {
+    products = products.filter(product => 
+      product.categories?.some(cat => cat.category_name === selectedCategory)
+    );
   }
 
   // Filter by stock status
@@ -45,28 +46,10 @@ const ProductList = ({ onProductClick }) => {
 
   return (
     <div>
-      <div className="products-header">
-        <h1 className="products-title">Our Products</h1>
-      </div>
+      <h1 className="page-title">{selectedCategory || 'All'}</h1>
 
       {/* Filters */}
       <div className="filters">
-        <div className="filter-group">
-          <label className="filter-label">Filter by Category:</label>
-          <select
-            className="filter-select"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="">All Categories</option>
-            {categories.map(category => (
-              <option key={category._id} value={category._id}>
-                {category.category_name}
-              </option>
-            ))}
-          </select>
-        </div>
-
         <div className="filter-group">
           <label className="filter-label">
             <input
@@ -82,7 +65,7 @@ const ProductList = ({ onProductClick }) => {
 
       {/* Products Grid */}
       {products.length === 0 ? (
-        <div className="loading">
+        <div className="page-title">
           {selectedCategory ? 'No products found in this category.' : 'No products available.'}
         </div>
       ) : (
@@ -92,6 +75,7 @@ const ProductList = ({ onProductClick }) => {
               key={product._id}
               product={product}
               onClick={() => onProductClick(product)}
+              onAddToCart={onAddToCart}
             />
           ))}
         </div>

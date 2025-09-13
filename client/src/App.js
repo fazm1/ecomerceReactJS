@@ -10,6 +10,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
   const [currentView, setCurrentView] = useState('products');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const addToCart = (product, quantity = 1) => {
     const existingItem = cartItems.find(item => item._id === product._id);
@@ -70,6 +71,10 @@ function App() {
     setCurrentView('products');
   };
 
+  const handleCategoryChange = (categoryName) => {
+    setSelectedCategory(categoryName);
+  };
+
   return (
     <div className="App">
       <Header 
@@ -77,23 +82,31 @@ function App() {
         onShowCart={handleShowCart}
         onBackToProducts={handleBackToProducts}
         currentView={currentView}
+        onCategoryChange={handleCategoryChange}
+        selectedCategory={selectedCategory}
       />
       
       <main className="main">
-        <div className="container">
-          {currentView === 'products' && (
-            <ProductList onProductClick={handleProductClick} />
-          )}
-          
-          {currentView === 'product-detail' && selectedProduct && (
+        {currentView === 'products' && (
+          <ProductList 
+            onProductClick={handleProductClick} 
+            onAddToCart={addToCart}
+            selectedCategory={selectedCategory}
+          />
+        )}
+        
+        {currentView === 'product-detail' && selectedProduct && (
+          <div className="container">
             <ProductDetail 
               product={selectedProduct}
               onAddToCart={addToCart}
               onBack={handleBackToProducts}
             />
-          )}
-          
-          {currentView === 'cart' && (
+          </div>
+        )}
+        
+        {currentView === 'cart' && (
+          <div className="container">
             <Cart 
               cartItems={cartItems}
               onUpdateQuantity={updateCartQuantity}
@@ -101,8 +114,8 @@ function App() {
               onClose={handleCloseCart}
               total={getCartTotal()}
             />
-          )}
-        </div>
+          </div>
+        )}
       </main>
     </div>
   );

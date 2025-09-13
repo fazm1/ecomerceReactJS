@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import ImageCarousel from './ImageCarousel';
 
 const ProductDetail = ({ product, onAddToCart, onBack }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const primaryImage = product.images?.find(img => img.is_primary) || product.images?.[0];
   const price = product.prices?.[0];
   const currency = price?.currency?.currency_symbol || '$';
 
@@ -42,33 +42,16 @@ const ProductDetail = ({ product, onAddToCart, onBack }) => {
   return (
     <div>
       <button className="back-btn" onClick={onBack}>
-        ← Back to Products
+        Back to Products
       </button>
 
       <div className="product-detail">
         <div className="product-detail-content">
           <div>
-            {primaryImage ? (
-              <img
-                src={primaryImage.image_url}
-                alt={primaryImage.alt_text || product.name}
-                className="product-detail-image"
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/500x400?text=No+Image';
-                }}
-              />
-            ) : (
-              <div className="product-detail-image" style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                backgroundColor: '#f8f9fa',
-                color: '#6c757d',
-                fontSize: '1.5rem'
-              }}>
-                📦 No Image Available
-              </div>
-            )}
+            <ImageCarousel 
+              images={product.images || []} 
+              productName={product.name}
+            />
           </div>
 
           <div className="product-detail-info">

@@ -14,7 +14,7 @@ const Cart = ({ cartItems, onUpdateQuantity, onRemoveItem, onClose, total }) => 
       <div className="cart-header">
         <h2 className="cart-title">Shopping Cart</h2>
         <button className="cart-close" onClick={onClose}>
-          ✕ Close
+          Close
         </button>
       </div>
 
@@ -49,7 +49,7 @@ const Cart = ({ cartItems, onUpdateQuantity, onRemoveItem, onClose, total }) => 
                     color: '#6c757d',
                     fontSize: '0.8rem'
                   }}>
-                    📦
+                    No Image
                   </div>
                 )}
 
