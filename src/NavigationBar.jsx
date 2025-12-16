@@ -3,18 +3,8 @@ import { useLocation } from 'react-router-dom';
 import logo from './images/BrandIcon.svg'
 import cart from './images/EmptyCart.svg'
 import { Link } from 'react-router-dom';
-import { Query } from '@apollo/client/react/components';
-import { gql } from '@apollo/client';
 import Cart from './Cart';
-
-
-const ALL_CATEGORIES = gql`
-query getAllCategories{
-  categories{
-    name
-  }
-}
-  `
+import dataService from './dataService';
 
 function withRouterNew(Component){
     return function Wrapper(props){
@@ -69,26 +59,19 @@ class NavigationBar extends Component {
 
     render() { 
         const { categoryName, cartItems, addToCart, removeFromCart, emptyCart} = this.props;
+        const categories = dataService.getCategories();
         return (<>
         <nav className="navbar">
         
         <ul>
-        <Query query={ALL_CATEGORIES}>
-        {({loading, error, data}) =>{
-            if(loading) return ' ';
-            if(error) return `Error: ${error.message}`;
-            const categories = data.categories;
-            return categories.map((category)=>(
-              <li className={categoryName === category.name || (categoryName === "" && category.name ==="all") ? "active": ""} key = {category.name} data-testid={categoryName === category.name || (categoryName === "" && category.name ==="all")?'active-category-link':'category-link'}>
-              <Link  
-              to = {category.name !== "all"? `/${category.name}`: `/`}
-              >{category.name}
-              </Link>
-              </li>         
-            ));
-          }}
-          </Query>
-          
+        {categories.map((category)=>(
+          <li className={categoryName === category.name || (categoryName === "" && category.name ==="all") ? "active": ""} key = {category.name} data-testid={categoryName === category.name || (categoryName === "" && category.name ==="all")?'active-category-link':'category-link'}>
+          <Link  
+          to = {category.name !== "all"? `/${category.name}`: `/`}
+          >{category.name}
+          </Link>
+          </li>         
+        ))}
         </ul>
         
         <Link to= "/" className='logo'><img src={logo}></img></Link>

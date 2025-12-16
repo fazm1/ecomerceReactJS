@@ -8,37 +8,9 @@ import CapacityAttribute from './CapacityAttribute';
 import TIDIKAttribute from './TIDIKAttribute';
 import WUSB3PAttribute from './WUSB3PAttribute';
 import parse from 'html-react-parser';
-import { Query } from '@apollo/client/react/components';
-import { gql } from '@apollo/client';
+import dataService from './dataService';
 import left from './images/left.svg'
 import right from './images/right.svg'
-
-
-const ALL_PRODUCTS = gql`
-query getAllProducts{
-    products{
-      id,
-      name,
-      inStock,
-      gallery,
-      category,
-      description,
-      attributes{
-        name,
-        items{
-          displayValue,
-          value,
-        }  
-      },
-      prices{
-        amount,
-        currency{
-          symbol
-        }
-      }
-    }
-  }
-  `
 
   function withRouterNew(Component){
     return function Wrapper(props){
@@ -111,79 +83,116 @@ class ProductDetailsPage extends Component {
       addToCart(this.state.id, this.state.name, this.state.images[0], this.state.price, this.state.currency, this.state.AllAttributes, this.state.selectedAttributes)
     }
     
+    componentDidMount() {
+      const {id} = this.props;
+      const product = dataService.getProductById(id);
+      
+      if (product) {
+          this.setState({
+              id: product.id,
+              name: product.name,
+              price: product.prices[0].amount,
+              currency: product.prices[0].currency.symbol,
+              description: product.description,
+              attributes: product.attributes,
+              inStock: product.inStock,
+              images: product.gallery,
+          });
+
+          for(let i = 0; i < product.attributes.length; i++){
+              if (product.attributes[i].name === "Size"){
+                  this.setState({ sizes: product.attributes[i].items });
+              }
+              else if (product.attributes[i].name === "Color"){
+                  this.setState({ colors: product.attributes[i].items });
+              }
+              else if (product.attributes[i].name === "Capacity"){
+                  this.setState({ capacities: product.attributes[i].items });
+              }
+              else if (product.attributes[i].name === "Touch ID in keyboard"){
+                  this.setState({ TIDIK: product.attributes[i].items });
+              }
+              else if (product.attributes[i].name === "With USB 3 ports"){
+                  this.setState({ WUSB3P: product.attributes[i].items });
+              }
+          }
+      }
+    }
+
+    componentDidUpdate(prevProps) {
+      if (prevProps.id !== this.props.id) {
+        const {id} = this.props;
+        const product = dataService.getProductById(id);
+        
+        if (product) {
+            this.setState({
+                id: product.id,
+                name: product.name,
+                price: product.prices[0].amount,
+                currency: product.prices[0].currency.symbol,
+                description: product.description,
+                attributes: product.attributes,
+                inStock: product.inStock,
+                images: product.gallery,
+                currentIndex: 0,
+                selectedAttributes: {},
+                AllAttributes: {}
+            });
+
+            for(let i = 0; i < product.attributes.length; i++){
+                if (product.attributes[i].name === "Size"){
+                    this.setState({ sizes: product.attributes[i].items });
+                }
+                else if (product.attributes[i].name === "Color"){
+                    this.setState({ colors: product.attributes[i].items });
+                }
+                else if (product.attributes[i].name === "Capacity"){
+                    this.setState({ capacities: product.attributes[i].items });
+                }
+                else if (product.attributes[i].name === "Touch ID in keyboard"){
+                    this.setState({ TIDIK: product.attributes[i].items });
+                }
+                else if (product.attributes[i].name === "With USB 3 ports"){
+                    this.setState({ WUSB3P: product.attributes[i].items });
+                }
+            }
+        }
+      }
+    }
     
       render() {
-        const {id} = this.props;
         const regex = /\\n|\\r\\n|\\n\\r|\\r/g;
         
-        return (<>
-        <Query query={ALL_PRODUCTS}>
-        {({ loading, error, data})=>{
-        if (loading) return <div className = "PageTitle">Loading...</div>;
-        if (error) return <div className = "PageTitle"> {error.message}</div>;
-        {data.products.map((product)=>{
-            if(product.id === id){
-                this.state.id = product.id;
-                this.state.name = product.name;
-                this.state.price = product.prices[0].amount;
-                this.state.currency = product.prices[0].currency[0].symbol;
-                this.state.description = product.description;
-                this.state.attributes = product.attributes;
-                this.state.inStock = product.inStock;
-                this.state.images = product.gallery;
-            
-                for(let i = 0; i < this.state.attributes.length; i++){
-                    if (this.state.attributes[i].name === "Size"){
-                        this.state.sizes = product.attributes[i].items
-                    }
-                    else if (this.state.attributes[i].name === "Color"){
-                        this.state.colors = product.attributes[i].items
-                    }
-                    else if (this.state.attributes[i].name === "Capacity"){
-                        this.state.capacities = product.attributes[i].items
-                    }
-                    else if (this.state.attributes[i].name === "Touch ID in keyboard"){
-                        this.state.TIDIK = product.attributes[i].items
-                    }
-                    else if (this.state.attributes[i].name === "With USB 3 ports"){
-                        this.state.WUSB3P = product.attributes[i].items
-                    }
-                }
-                
-            }
-            })}
-        ;
-
+        if (!this.state.name) {
+            return <div className="PageTitle">Loading...</div>;
+        }
         
-          return (     
-                    <div className = "PDP">
-                      <div className="row">
-                      <div className="col-8">
-                        <div className="Gallery row" data-testid='product-gallery'>
-                          <div className="ImagesSet col-2">{this.state.images.map((image, index)=>(<img key={index} onClick={()=> this.setState(({currentIndex:index}))} src ={image} className="GalleryImage"></img>))}</div>
-                          <div className="Carousel col-6">
-                            <button style = {this.state.images.length<2? {display:"none"} : {} } onClick={()=>{this.setState(prevState => ({currentIndex: prevState.currentIndex > 0? prevState.currentIndex - 1  : prevState.images.length-1}))}} className = "leftCursor"><img className="RightArrow" src={left}></img></button>
-                            <button style = {this.state.images.length<2? {display:"none"} : {} } onClick={()=>{this.setState(prevState => ({currentIndex: prevState.currentIndex < prevState.images.length - 1? prevState.currentIndex + 1  : 0}))}} className = "rightCursor"><img className="RightArrow" src={right}></img></button>
-                            <div className="CarouselImageContainer"><img src = {this.state.images[this.state.currentIndex]} className='CarouselImage'></img></div>
-                          </div>
-                        </div>      
-                      </div>
-                      <div className="col-4">
-                        <div className="PDPTitle">{this.state.name}</div>
-                        <div>{this.state.attributes.map((attribute)=>this.renderAttributeComponent(attribute))}</div>
-                        <div className="PDPPriceText">Price:</div>
-                        <div className="PDPPrice">{this.state.currency}{this.state.price}</div>
-                        <button className="PDPAddToCart" data-testid='add-to-cart' onClick={this.handleAddToCart} disabled={!this.state.inStock || !this.allAttributesSelected()} style={!this.state.inStock || !this.allAttributesSelected()? {opacity: "0.5", filter: "alpha(opacity=50)"} : {}}>{this.state.inStock?"ADD TO CART": "OUT OF STOCK"}</button>
-                        <div className="PDPDescription" data-testid='product-description'>{parse(this.state.description.replace(regex, '<br>'))}</div> 
-                    </div>
+        return (
+          <div className = "PDP">
+            <div className="row">
+            <div className="col-8">
+              <div className="Gallery row" data-testid='product-gallery'>
+                <div className="ImagesSet col-2">{this.state.images && this.state.images.map((image, index)=>(<img key={index} onClick={()=> this.setState(({currentIndex:index}))} src ={image} className="GalleryImage"></img>))}</div>
+                <div className="Carousel col-6">
+                  <button style = {this.state.images && this.state.images.length<2? {display:"none"} : {} } onClick={()=>{this.setState(prevState => ({currentIndex: prevState.currentIndex > 0? prevState.currentIndex - 1  : prevState.images.length-1}))}} className = "leftCursor"><img className="RightArrow" src={left}></img></button>
+                  <button style = {this.state.images && this.state.images.length<2? {display:"none"} : {} } onClick={()=>{this.setState(prevState => ({currentIndex: prevState.currentIndex < prevState.images.length - 1? prevState.currentIndex + 1  : 0}))}} className = "rightCursor"><img className="RightArrow" src={right}></img></button>
+                  <div className="CarouselImageContainer"><img src = {this.state.images && this.state.images[this.state.currentIndex]} className='CarouselImage'></img></div>
+                </div>
+              </div>      
+            </div>
+            <div className="col-4">
+              <div className="PDPTitle">{this.state.name}</div>
+              <div>{this.state.attributes && this.state.attributes.map((attribute)=>this.renderAttributeComponent(attribute))}</div>
+              <div className="PDPPriceText">Price:</div>
+              <div className="PDPPrice">{this.state.currency}{this.state.price}</div>
+              <button className="PDPAddToCart" data-testid='add-to-cart' onClick={this.handleAddToCart} disabled={!this.state.inStock || !this.allAttributesSelected()} style={!this.state.inStock || !this.allAttributesSelected()? {opacity: "0.5", filter: "alpha(opacity=50)"} : {}}>{this.state.inStock?"ADD TO CART": "OUT OF STOCK"}</button>
+              <div className="PDPDescription" data-testid='product-description'>{parse(this.state.description.replace(regex, '<br>'))}</div> 
+          </div>
 
-                    </div>
-                    </div>
-          );
-        }}
-        </Query>
-        </>
-      )}
+          </div>
+          </div>
+        );
+      }
 }
  /** IMPORTANT: wih regards to product-description, the stable hosting that I'm using unfortunately truncates long text, disallowing me from
   * retrieving the description text of "apple-airtag", "apple-airpods-pro", and "xbox-series-s", and triggering an "Unexpected end of JSON" error,

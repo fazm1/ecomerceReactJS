@@ -1,23 +1,4 @@
 import React, { Component } from 'react';
-import { Query } from '@apollo/client/react/components';
-import { gql } from '@apollo/client';
-import { withApollo } from '@apollo/client/react/hoc';
-
-const GET_ATTRIBUTION = gql`
-query getAttributionID($attribute: String!, $set: String!){
-  getAttributionID(attribute: $attribute, set: $set )
-  }
-  `
-const PLACE_ORDER = gql`
-mutation placeOrder($total: Float!){
-  placeOrder(total: $total)
-}
-`
-const ORDER_ITEMS = gql`
-mutation OrderItems($product: String!, $item:[Int]!){
-  OrderItems(product: $product, item: $item)
-}
-`
 
 class Cart extends Component {
     componentDidMount(){
@@ -65,54 +46,8 @@ class Cart extends Component {
 
      }
 
-     getAttributionID = async (attribute, set)=>{
-      const {data} = await this.props.client.query({
-        query: GET_ATTRIBUTION,
-        variables: {attribute, set}
-      });
-      return data.getAttributionID
-    };
-
-    placeOrder = async () => {
-      const {cartItems} = this.state;
-      const orders = [];
-
-      for (const item of cartItems){
-        const attributionIDs = await Promise.all(
-          Object.keys(item.allAttributes).map(async(attributeSetName) => {
-            const value = item.attribute[attributeSetName];
-            return await this.getAttributionID(value, attributeSetName);
-          })
-        );
-        orders.push({
-          product: item.id,
-          item: attributionIDs,
-          quantity: item.quantity
-        })
-      }
-      
-      const {data} = await this.props.client.mutate({
-        mutation: PLACE_ORDER,
-        variables: {
-          total: this.calculateTotal(),
-        },
-      });
-
-      for(const order of orders){
-        if(order.item.length === 0){
-          order.item = [57];
-        }
-        for(let i=0; i < order.quantity; i++){
-        const {data} = await this.props.client.mutate({
-          mutation: ORDER_ITEMS,
-          variables: {
-            product: order.product,
-            item: order.item,
-          },
-        });
-        
-      }
-    }
+    placeOrder = () => {
+      // Since we're using static data, we'll just simulate placing an order
       this.setState({cartItems: []}, () =>{
         this.props.emptyCart();
       });
@@ -170,4 +105,4 @@ class Cart extends Component {
     }
 }
  
-export default withApollo(Cart);
+export default Cart;
