@@ -202,6 +202,7 @@ body{
     font-weight: 550;
 }
 .product-image{
+    object-fit:cover;
     width: 354px;
     height: 330px;
     transition: 0.3s;
@@ -372,6 +373,7 @@ body{
     linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
     display:block;
     margin-bottom: 15px;
+    object-fit: cover;
 }
 .Carousel{
     position: relative;
@@ -382,6 +384,7 @@ body{
     overflow-y: auto;
     overflow-x:auto;
     transition: 0.3s;
+    object-fit: cover;
 }
 .CarouselImage{
     width: 100%;
@@ -524,6 +527,7 @@ body{
     position: absolute;
     right: 0px;
     bottom: 18px;
+    object-fit: contain;
 
 }
 
